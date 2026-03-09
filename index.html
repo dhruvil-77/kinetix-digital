@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetix Digital | Accelerate Your Digital Growth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-color: #0d1117;
+            --surface-color: #161b22;
+            --surface-hover: #1f2937;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --primary-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            --accent-gradient: linear-gradient(135deg, #8a2be2 0%, #4169e1 100%);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Typography & Utilities */
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .accent-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-padding {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid #0072ff;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-gradient);
+            color: #fff;
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #0072ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover {
+            color: #00c6ff;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            background: radial-gradient(circle at center, #1a2235 0%, var(--bg-color) 70%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--surface-color);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        /* Services Section */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--surface-color);
+            padding: 40px 30px;
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: var(--surface-hover);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-card {
+            background: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(45deg, #1f2937, #374151);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.1);
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Blog Section */
+        .blog-card {
+            background: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            background: var(--surface-hover);
+        }
+
+        .blog-img {
+            height: 200px;
+            background: linear-gradient(135deg, #2d3748, #1a202c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.2);
+            font-size: 2.5rem;
+        }
+
+        .blog-content {
+            padding: 30px;
+        }
+
+        .blog-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-content h3 {
+            color: #00c6ff;
+        }
+
+        .blog-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .read-more {
+            color: #00c6ff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .read-more i {
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Testimonials Section */
+        .testimonial-card {
+            background: var(--surface-color);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .client-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .client-info span {
+            color: #00c6ff;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--surface-color);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #0072ff;
+            background: rgba(0,0,0,0.4);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .form-status {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .status-success {
+            color: #10b981;
+        }
+        
+        .status-error {
+            color: #ef4444;
+        }
+
+        /* Footer */
+        footer {
+            background: #090c10;
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--surface-color);
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-gradient);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--bg-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.5s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero h1 { font-size: 2.5rem; }
+            .hero-btns { flex-direction: column; }
+            
+            .section-padding { padding: 60px 5%; }
+            .about-content { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-bolt"></i> Kinetix <span class="gradient-text">Digital</span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-btn" id="menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="hero-content reveal">
+            <h1>Accelerate Your <span class="accent-text">Digital Growth</span></h1>
+            <p>We are a forward-thinking digital marketing agency that combines data-driven strategies with creative execution to scale your brand in the digital landscape.</p>
+            <div class="hero-btns">
+                <a href="#services" class="btn btn-primary">Get Started</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-padding" id="about">
+        <div class="section-header reveal">
+            <h2>Who We Are</h2>
+            <p>Driving results through innovation and expertise</p>
+        </div>
+        <div class="about-content reveal">
+            <p>At <strong>Kinetix Digital</strong>, we empower businesses to achieve exponential growth. By leveraging cutting-edge digital marketing, bold branding, technical SEO, and highly-targeted advertising, we turn your vision into measurable success. We don't just generate traffic; we build sustainable digital ecosystems that convert.</p>
+        </div>
+    </section>
+
+    <section class="section-padding" id="services">
+        <div class="section-header reveal">
+            <h2>Our Services</h2>
+            <p>Comprehensive solutions for modern brands</p>
+        </div>
+        <div class="grid-container">
+            <div class="service-card reveal">
+                <i class="fa-solid fa-hashtag service-icon"></i>
+                <h3>Social Media Marketing</h3>
+                <p>Engage your audience and build brand loyalty with targeted, creative social media strategies across all major platforms.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fa-solid fa-magnifying-glass-chart service-icon"></i>
+                <h3>SEO Optimization</h3>
+                <p>Dominate search rankings and drive organic traffic with our technical and content-driven SEO methodologies.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fa-solid fa-code service-icon"></i>
+                <h3>Website Development</h3>
+                <p>Fast, responsive, and conversion-optimized websites designed to provide an exceptional user experience.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fa-solid fa-bullseye service-icon"></i>
+                <h3>Paid Ads (Google & Meta)</h3>
+                <p>Maximize your ROI with hyper-targeted PPC campaigns designed to capture high-intent leads and sales.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fa-solid fa-pen-nib service-icon"></i>
+                <h3>Branding & Design</h3>
+                <p>Establish a powerful visual identity with custom logos, brand guidelines, and stunning UI/UX design.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fa-solid fa-newspaper service-icon"></i>
+                <h3>Content Marketing</h3>
+                <p>Tell your brand's story through compelling copy, articles, and media that establish industry authority.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="portfolio">
+        <div class="section-header reveal">
+            <h2>Featured Work</h2>
+            <p>A glimpse into our successful campaigns</p>
+        </div>
+        <div class="grid-container">
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h3>FinTech Startup Scaling</h3>
+                    <p>Increased user acquisition by 300% in 6 months using advanced Meta Ads and landing page optimization.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <i class="fa-solid fa-shop"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h3>E-Commerce SEO Overhaul</h3>
+                    <p>Achieved page 1 Google rankings for 50+ high-volume keywords, doubling organic revenue.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Apparel Brand Redesign</h3>
+                    <p>Complete website overhaul resulting in a 45% increase in conversion rate and improved mobile UX.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="blog">
+        <div class="section-header reveal">
+            <h2>Latest Insights</h2>
+            <p>Digital marketing trends and strategies</p>
+        </div>
+        <div class="grid-container">
+            <div class="blog-card reveal">
+                <div class="blog-img">
+                    <i class="fa-brands fa-google"></i>
+                </div>
+                <div class="blog-content">
+                    <h3>The Future of SEO in 2026</h3>
+                    <p>Discover how AI and semantic search are fundamentally changing the way we approach organic search rankings.</p>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="blog-card reveal">
+                <div class="blog-img">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                </div>
+                <div class="blog-content">
+                    <h3>Mastering Meta Ads Tracking</h3>
+                    <p>A comprehensive guide to setting up the Conversions API and overcoming tracking limitations.</p>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="blog-card reveal">
+                <div class="blog-img">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                </div>
+                <div class="blog-content">
+                    <h3>Email Marketing Automation</h3>
+                    <p>Learn how to build automated email sequences that nurture leads and turn subscribers into loyal customers.</p>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="testimonials">
+        <div class="section-header reveal">
+            <h2>Client Success</h2>
+            <p>What our partners say about us</p>
+        </div>
+        <div class="grid-container">
+            <div class="testimonial-card reveal">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">"Kinetix completely transformed our online presence. Within three months of their SEO and Ads campaign, our qualified leads quadrupled. True professionals."</p>
+                <div class="client-info">
+                    <h4>Sarah Jenkins</h4>
+                    <span>CMO, TechFlow Solutions</span>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">"The website they built for us is not only visually stunning but incredibly fast. Our bounce rate dropped instantly, and sales have never been better."</p>
+                <div class="client-info">
+                    <h4>David Chen</h4>
+                    <span>Founder, UrbanRoast Coffee</span>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">"Their data-driven approach to our Meta ads changed everything. We finally have a predictable CAC and can scale our budget with absolute confidence."</p>
+                <div class="client-info">
+                    <h4>Elena Rodriguez</h4>
+                    <span>Director of Growth, FitSphere App</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="contact">
+        <div class="section-header reveal">
+            <h2>Let's Talk Growth</h2>
+            <p>Ready to scale? Reach out to our team today.</p>
+        </div>
+        <div class="contact-container reveal">
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" class="form-control" placeholder="Tell us about your project goals..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary submit-btn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                <div id="form-status" class="form-status"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content reveal">
+            <div class="logo">
+                <i class="fa-solid fa-bolt"></i> Kinetix <span class="gradient-text">Digital</span>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 Kinetix Digital. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky Navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Account for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on initial load
+
+        // Form Validation
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            formStatus.style.display = 'block';
+            
+            if (name === '' || email === '' || message === '') {
+                formStatus.textContent = 'Please fill out all fields.';
+                formStatus.className = 'form-status status-error';
+            } else if (!validateEmail(email)) {
+                formStatus.textContent = 'Please enter a valid email address.';
+                formStatus.className = 'form-status status-error';
+            } else {
+                // Simulate successful submission
+                formStatus.textContent = 'Thank you! Your message has been sent successfully.';
+                formStatus.className = 'form-status status-success';
+                contactForm.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 5000);
+            }
+        });
+
+        // Basic Email Regex
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
+</body>
+</html>
